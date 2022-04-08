@@ -26,4 +26,7 @@ class Division(models.Model):
 
 class PlantingFigure(models.Model):
 	date_input = models.DateTimeField(auto_now_add=True)
-	date_planted = models.CharField()
+	date_planted = models.CharField(max_length=50)
+	program_name = models.CharField(max_length=200)
+	planting_division = models.ForeignKey(Division, on_delete=models.CASCADE, null=True)
+	
