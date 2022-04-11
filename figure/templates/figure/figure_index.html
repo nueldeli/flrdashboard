@@ -1,7 +1,32 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="custom-div">
-	<p>It works</p>
+<br>
+<h5 class="text-center">Figure Overview</h5>
+<br>
+<div class="custom-div text-center border shadow rounded p-4">
+	{% for figure in figure_overview_data %}
+		<p>TOTAL TREES PLANTED</p>
+		<h3>{{ figure.total_trees_planted }}</h3>
+
+		<br>
+
+		<p>TOTAL SPECIES</p>
+		<h3>{{ figure.total_species }}</h3>
+
+		<br>
+
+		<p>TOTAL HECTARES</p>
+		<h3>{{ figure.total_hectares }}</h3>
+	{% endfor %}
 </div>
+
+<br>
+
+<div class="custom-div">
+	<hr>
+</div>
+
+<br>
+		<p>{{kch_data.planting_program_name}}</p>
 {% endblock %}

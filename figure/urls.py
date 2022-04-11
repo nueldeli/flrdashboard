@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import FigureIndexView
+from .views import figure_index_view
 
 urlpatterns = [
-	path('', FigureIndexView.as_view(), name='figure_index'),
+	path('', figure_index_view, name='figure_index'),
 ]
