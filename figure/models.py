@@ -39,17 +39,8 @@ class PlantingFigure(models.Model):
 		ordering = ['-planting_total_trees_planted']
 
 	def __str__(self):
-		return self.planting_program_name
+		return self.planting_program_name 
 
 	def get_absolute_url(self):
 		return reverse_lazy('figure_index')
 
-class FigureByDivision(models.Model):
-	figure_division = models.ForeignKey(Division, null=True, on_delete=models.CASCADE)
-	division_total_trees_planted = models.IntegerField()
-
-	def __str__(self):
-		return self.figure_division + ' ' + str(self.division_total_trees_planted)
-
-	def get_absolute_url(self):
-		return reverse_lazy('figure_index')
