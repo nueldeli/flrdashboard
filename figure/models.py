@@ -2,6 +2,16 @@ from django.db import models
 from django.urls import reverse_lazy
 
 # Create your models here.
+class Division(models.Model):
+	division_name = models.CharField(max_length=100)
+	division_img = models.ImageField('Division', null=True, upload_to='division_img/')
+
+	def __str__(self):
+		return self.division_name
+
+	def get_absolute_url(self):
+		return reverse_lazy('figure_index')
+
 class FigureOverview(models.Model):
 	date_input = models.DateTimeField(auto_now_add=True)
 	total_trees_planted = models.IntegerField()
@@ -14,12 +24,15 @@ class FigureOverview(models.Model):
 	def get_absolute_url(self):
 		return reverse_lazy('figure_index')
 
-class Division(models.Model):
-	division_name = models.CharField(max_length=100)
-	division_img = models.ImageField('Division', null=True, upload_to='division_img/')
+class FigureByDivision(models.Model):
+	figure_division = models.ForeignKey(Division, null=True, on_delete=models.CASCADE)
+	figure_division_total = models.IntegerField()
+
+	class Meta:
+		ordering = ['-figure_division_total']
 
 	def __str__(self):
-		return self.division_name
+		return str(self.figure_division) + " " + str(self.figure_division_total)
 
 	def get_absolute_url(self):
 		return reverse_lazy('figure_index')

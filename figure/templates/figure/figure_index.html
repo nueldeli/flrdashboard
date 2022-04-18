@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
 <br>
 <h5 class="text-center">Figure Overview</h5>
@@ -18,6 +20,13 @@
 
 		<p>TOTAL HECTARES</p>
 		<h3>{{ figure.total_hectares }}</h3>
+		{% if user.is_authenticated and user.is_staff %}
+			<div class="text-center">
+				<a href="{% url 'figure_overview_update' figure.pk %}">
+					<button class="btn btn-custom">Update figure</button>
+				</a>
+			</div>
+		{% endif %} 
 	{% endfor %}
 </div>
 
@@ -28,5 +37,26 @@
 </div>
 
 <br>
-	<p>{{ b.division_name }}</p>
-{% endblock %}
+<h5 class="text-center">Number of trees by Division</h5>
+<br>
+	{% for division in figure_by_division_data %}
+	<div class="row custom-div border shadow rounded p-4">
+		<div class="col-2 text-center">
+			<h2 class="stat_counter">{{ forloop.counter }}</h2>
+		</div>
+		<div class="col-4 mb-2">
+			<img class="w-100" src="{{ division.figure_division.division_img.url }}">
+		</div>
+		<div class="pl-4">
+			<p>{{ division.figure_division.division_name }}</p>
+			<h3>{{ division.figure_division_total }}</h3>
+			<div class="text-center">
+				<a href="{% url 'figure_by_division_update' division.pk %}">
+					<button class="btn btn-custom">Update</button>
+				</a>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+	<br>
+{% endblock %}	
