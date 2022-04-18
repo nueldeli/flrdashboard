@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from .models import FigureOverview, PlantingFigure, Division, FigureByDivision
-from .forms import UpdateFigureOverviewForm, UpdateFigureByDivisionForm
-from django.views.generic import UpdateView
+from .forms import UpdateFigureOverviewForm, UpdateFigureByDivisionForm, AddPlantingFigureForm, UpdatePlantingFigureForm
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.db.models import Sum
+from django.urls import reverse_lazy
 #from django.views.generic import TemplateView
 
 # Create your views here.
@@ -33,3 +34,31 @@ class UpdateFigureByDivisionView(UpdateView):
 	model = FigureByDivision
 	template_name = 'figure/figure_by_division_update.html'
 	form_class = UpdateFigureByDivisionForm
+
+class PlantingFigureIndexView(ListView):
+	model = PlantingFigure
+	template_name = 'figure/planting_figure_index.html'
+
+class PlantingFigureDetailView(DetailView):
+	model = PlantingFigure
+	template_name = 'figure/plantng_figure_detail.html'
+
+class AddPlantingFigureView(CreateView):
+	model = PlantingFigure
+	template_name = 'figure/planting_figure_add.html'
+	form_class = AddPlantingFigureForm
+
+class UpdatePlantingFigureView(UpdateView):
+	model = PlantingFigure
+	template_name = 'figure/planting_figure_update.html'
+	form_class = UpdatePlantingFigureForm
+
+class DeletePlantingFigureView(DeleteView):
+	model = PlantingFigure
+	template_name = 'figure/figure_planting_delete.html'
+	success_url = reverse_lazy('figure_index')
+
+
+
+
+
