@@ -4,64 +4,114 @@
 
 {% block content %}
 <br>
-<h5 class="text-center">Figure Overview</h5>
-<br>
-<div class="custom-div text-center border shadow rounded p-4">
-	{% for figure in figure_overview_data %}
-		<p>TOTAL TREES PLANTED</p>
-		<h3>{{ figure.total_trees_planted }}</h3>
-
-		<br>
-
-		<p>TOTAL SPECIES</p>
-		<h3>{{ figure.total_species }}</h3>
-
-		<br>
-
-		<p>TOTAL HECTARES</p>
-		<h3>{{ figure.total_hectares }}</h3>
-		{% if user.is_authenticated and user.is_staff %}
-			<div class="text-center">
-				<a href="{% url 'figure_overview_update' figure.pk %}">
-					<button class="btn btn-custom">Update figure</button>
-				</a>
-			</div>
-		{% endif %} 
-	{% endfor %}
+<h4 class="text-center">Figure Overview</h4>
+<div class="row custom-div text-center">
+	 {% for summary in fo_data_object %}
+		<div class="col-sm border shadow rounded p-4 m-2">
+			<p>Total trees planted</p>
+			<h4>{{ summary.total_trees_planted }}</h4>
+		</div>
+		<div class="col-sm border shadow rounded p-4 m-2">
+			<p>Total trees planted</p>
+			<h4>{{ summary.total_species }}</h4>
+		</div>
+		<div class="col-sm border shadow rounded p-4 m-2">
+			<p>Total trees planted</p>
+			<h4>{{ summary.total_hectares }}</h4>
+		</div>
+	 {% endfor %}
 </div>
-
-<br>
 
 <div class="custom-div">
 	<hr>
 </div>
 
 <br>
-<h5 class="text-center">Number of trees by Division</h5>
-<br>
-	{% for division in figure_by_division_data %}
-	<div class="row custom-div border shadow rounded p-4">
-		<div class="col-2 text-center">
-			<h2 class="stat_counter">{{ forloop.counter }}</h2>
-		</div>
-		<div class="col-4 mb-2">
-			<img class="w-100" src="{{ division.figure_division.division_img.url }}">
-		</div>
-		<div class="pl-4">
-			<p>{{ division.figure_division.division_name }}</p>
-			<h3>{{ division.figure_division_total }}</h3>
-			<div class="text-center">
-				<a href="{% url 'figure_by_division_update' division.pk %}">
-					<button class="btn btn-custom">Update</button>
-				</a>
-			</div>
-		</div>
-	</div>
-	{% endfor %}
+
+<div class="custom-div">
+	<h4 class="text-center">Total trees planted by Division</h4>
 	<br>
-	<div class="text-center">
-		<a href="{% url 'planting_figure_index' %}">
-			<button class="btn btn-custom">View more</button>
-		</a>
-	</div>
+  	<canvas id="barChart"></canvas>
+</div>
+
+<br>
+
+<div class="row custom-div">
+	{% for division in fd_queryset %}
+	<div class="col-sm-6 mt-2">
+    	<div class="card">
+	      	<div class="card-body">
+	        	<h5 class="card-title">{{ division.division_name }}</h5>
+	        	<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+	        	<a href="#" class="btn btn-primary">View</a>
+	      	</div>
+    	</div>
+  	</div>
+	{% endfor %}
+</div>
+
+<br>
+<br>
+
+<script>
+  const labels = [
+    {% for lb in label %} '{{ lb }}', {% endfor %}
+  ];
+
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'Division by total trees planted',
+      backgroundColor: [
+      	'rgb(255, 188, 66)',
+      	'rgb(216, 17, 89)',
+      	'rgb(143, 45, 86)',
+      	'rgb(33, 131, 128)',
+      	'rgb(115, 210, 222)',
+      	'rgb(255, 99, 132)',
+      	'rgb(86, 52, 64)',
+      	'rgb(222, 205, 245)',
+      	'rgb(101, 97, 118)',
+      ],
+      borderColor: [
+      	'rgb(255, 188, 66)',
+      	'rgb(216, 17, 89)',
+      	'rgb(143, 45, 86)',
+      	'rgb(33, 131, 128)',
+      	'rgb(115, 210, 222)',
+      	'rgb(255, 99, 132)',
+      	'rgb(86, 52, 64)',
+      	'rgb(222, 205, 245)',
+      	'rgb(101, 97, 118)',
+      ],
+      data: [{% for data in div_data %}'{{ data|safe }}', {% endfor %}],
+    }]
+  };
+
+  const config = {
+    type: 'bar'	,
+    data: data,
+    options: {
+    	scales: {
+    		yAxes: [{
+    			ticks: {
+    				beginAtZero: true
+    			}
+    		}]
+    	},
+    	legend: {
+    		display: false
+    	}
+    }
+  };
+</script>
+
+
+<script>
+  const barChart = new Chart(
+    document.getElementById('barChart'),
+    config
+  );
+</script>
+
 {% endblock %}	
