@@ -28,10 +28,16 @@
 
 <br>
 
-<div class="custom-div">
-	<h4 class="text-center">Total trees planted by Division</h4>
+<div class="row container">
 	<br>
-  	<canvas id="barChart"></canvas>
+	<div class="col-sm-6 border rounded p-4">
+		<h5 class="text-center">Total trees planted by Division</h5>
+		<canvas id="barChart"></canvas>
+	</div>
+	<div class="col-sm-6 border rounded p-4">
+		<h5 class="text-center">Percentage by Division (%)</h5>
+		<canvas id="doughnutChart"></canvas>
+	</div>
 </div>
 
 <br>
@@ -43,17 +49,87 @@
 <br>
 
 <div class="row custom-div">
-	{% for division in fd_queryset %}
 	<div class="col-sm-6 mt-2">
     	<div class="card">
 	      	<div class="card-body">
-	        	<h5 class="card-title">{{ division.division_name }}</h5>
+	        	<h5 class="card-title">Kuching</h5>
 	        	<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-	        	<a href="#" class="btn btn-primary">View</a>
+	        	<a href="{% url 'kuching_index' %}" class="btn btn-custom">View</a>
 	      	</div>
     	</div>
   	</div>
-	{% endfor %}
+  	<div class="col-sm-6 mt-2">
+    	<div class="card">
+	      	<div class="card-body">
+	        	<h5 class="card-title">Sri Aman</h5>
+	        	<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+	        	<a href="#" class="btn btn-custom">View</a>
+	      	</div>
+    	</div>
+  	</div>
+  	<div class="col-sm-6 mt-2">
+    	<div class="card">
+	      	<div class="card-body">
+	        	<h5 class="card-title">Sarikei</h5>
+	        	<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+	        	<a href="#" class="btn btn-custom">View</a>
+	      	</div>
+    	</div>
+  	</div>
+  	<div class="col-sm-6 mt-2">
+    	<div class="card">
+	      	<div class="card-body">
+	        	<h5 class="card-title">Kapit</h5>
+	        	<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+	        	<a href="#" class="btn btn-custom">View</a>
+	      	</div>
+    	</div>
+  	</div>
+  	<div class="col-sm-6 mt-2">
+    	<div class="card">
+	      	<div class="card-body">
+	        	<h5 class="card-title">Sibu</h5>
+	        	<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+	        	<a href="#" class="btn btn-custom">View</a>
+	      	</div>
+    	</div>
+  	</div>
+  	<div class="col-sm-6 mt-2">
+    	<div class="card">
+	      	<div class="card-body">
+	        	<h5 class="card-title">Bintulu</h5>
+	        	<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+	        	<a href="#" class="btn btn-custom">View</a>
+	      	</div>
+    	</div>
+  	</div>
+  	<div class="col-sm-6 mt-2">
+    	<div class="card">
+	      	<div class="card-body">
+	        	<h5 class="card-title">Miri</h5>
+	        	<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+	        	<a href="#" class="btn btn-custom">View</a>
+	      	</div>
+    	</div>
+  	</div>
+  	<div class="col-sm-6 mt-2">
+    	<div class="card">
+	      	<div class="card-body">
+	        	<h5 class="card-title">Limbang</h5>
+	        	<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+	        	<a href="#" class="btn btn-custom">View</a>
+	      	</div>
+    	</div>
+  	</div>
+  	<div class="col-sm-6 mt-2">
+    	<div class="card">
+	      	<div class="card-body">
+	        	<h5 class="card-title">Lawas</h5>
+	        	<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+	        	<a href="#" class="btn btn-custom">View</a>
+	      	</div>
+    	</div>
+  	</div>
 </div>
 
 <br>
@@ -94,6 +170,37 @@
     }]
   };
 
+  const data_doughnut = {
+    labels: labels,
+    datasets: [{
+      label: 'Division by total trees planted',
+      backgroundColor: [
+      	'rgb(255, 188, 66)',
+      	'rgb(216, 17, 89)',
+      	'rgb(143, 45, 86)',
+      	'rgb(33, 131, 128)',
+      	'rgb(115, 210, 222)',
+      	'rgb(255, 99, 132)',
+      	'rgb(86, 52, 64)',
+      	'rgb(222, 205, 245)',
+      	'rgb(101, 97, 118)',
+      ],
+      borderColor: [
+      	'rgb(255, 188, 66)',
+      	'rgb(216, 17, 89)',
+      	'rgb(143, 45, 86)',
+      	'rgb(33, 131, 128)',
+      	'rgb(115, 210, 222)',
+      	'rgb(255, 99, 132)',
+      	'rgb(86, 52, 64)',
+      	'rgb(222, 205, 245)',
+      	'rgb(101, 97, 118)',
+      ],
+      data: [{% for data in div_percentage_data %}'{{ data|safe }}', {% endfor %}],
+      hoverOffset: 4,
+    }]
+  };
+
   const config = {
     type: 'bar'	,
     data: data,
@@ -110,6 +217,23 @@
     	}
     }
   };
+
+	const config_doughnut = {
+	  type: 'doughnut',
+	  data: data_doughnut,
+	  options: {
+	    responsive: true,
+	    plugins: {
+	      legend: {
+	        position: 'top',
+	      },
+	      title: {
+	        display: false,
+	        text: ''
+	      }
+	    }
+	  },
+	};
 </script>
 
 
@@ -118,6 +242,13 @@
     document.getElementById('barChart'),
     config
   );
+
+  const pieChart = new Chart(
+    document.getElementById('doughnutChart'),
+    config_doughnut
+  );
 </script>
+
+
 
 {% endblock %}	

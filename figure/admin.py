@@ -9,7 +9,7 @@ class FigureByDivisionAdmin(admin.ModelAdmin):
 	list_display = ('division_name', 'division_total_trees')
 
 class PlantingFigureAdmin(admin.ModelAdmin):
-	list_display = ('planting_program_name', 'date_planted', 'planting_division', 'planting_total_trees_planted')
+	list_display = ('planting_program_name', 'planting_division', 'planting_total_trees_planted')
 
 admin.site.site_header = "Dashboard Admin"
 admin.site.register(FigureOverview, FigureOverviewAdmin)

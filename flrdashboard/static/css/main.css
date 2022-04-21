@@ -32,6 +32,8 @@
 
 /* End media */
 
+
+
 body {
 	font-family: 'Work Sans', Sans-Serif;
 	font-size: 18px;
@@ -67,6 +69,10 @@ footer a:hover {
 
 
 /* End Global */
+.container {
+	margin: auto;
+}
+
 .text-content img {
 	width: 100%;
 	height: auto;

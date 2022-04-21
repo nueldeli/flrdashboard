@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+<div class="custom-div border rounded shadow p-4">
+	{% for i in kch_fd_object %}
+	<div class="row">
+		<div class="col-sm-2">
+			<img class="w-100" src="{{ i.division_img.url }}">
+		</div>
+		<div class="col-sm-10">
+			<h4>{{ i.division_name }}</h4>
+		</div>
+	</div>
+	{% endfor %}
+
+	{% for j in kch_pf_object %}
+	<div>
+		
+	</div>
+	{% endfor %}
+</div>
+{% endblock %}
