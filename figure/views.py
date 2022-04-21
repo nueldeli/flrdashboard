@@ -33,9 +33,13 @@ def figure_index_view(request):
 def kuching_index_view(request):
 	kch_pf_object = pf_queryset.filter(planting_division__icontains='Kuching')
 	kch_fd_object = fd_queryset.filter(division_name__icontains='Kuching')
+	kch_pf_cumulative = pf_queryset.filter(planting_division__icontains='Kuching').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+	kch_pf_total_species = pf_queryset.filter(planting_number_of_species__icontains='Kuching').aggregate(Sum('planting_number_of_species'))['planting_number_of_species__sum']
 	return render(request, 'figure/kuching_index.html', {
 		'kch_pf_object':kch_pf_object,
-		'kch_fd_object':kch_fd_object
+		'kch_fd_object':kch_fd_object,
+		'kch_pf_cumulative':kch_pf_cumulative,
+		'kch_pf_total_species':kch_pf_total_species
 		})
 
 
