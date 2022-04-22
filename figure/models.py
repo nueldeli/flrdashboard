@@ -20,8 +20,6 @@ YEAR_CHOICES = (
 		("2023", "2023"),
 		("2022", "2022"),
 		("2021", "2021"),
-		("2020", "2020"),
-		("2019", "2019"),
 	)
 
 MONTH_CHOICES = (
@@ -79,10 +77,10 @@ class PlantingFigure(models.Model):
 	planting_location = models.CharField(max_length=250)
 
 	class Meta:
-		ordering = ['-year', '-month']
+		ordering = ['-date_input']
 
 	def __str__(self):
 		return self.planting_program_name 
 
 	def get_absolute_url(self):
-		return reverse_lazy('figure_index')
+		return reverse_lazy('figure_index')	
