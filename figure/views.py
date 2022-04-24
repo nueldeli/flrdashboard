@@ -239,6 +239,7 @@ def sri_aman_2021_view(request):
 		'sa_2021_label':sa_2021_label,
 		'sa_2021_data':sa_2021_data,
 		})
+
 def sri_aman_2022_view(request):
 	sa_pf_object = pf_queryset.filter(planting_division__icontains='Sri Aman')
 	sa_fd_object = fd_queryset.filter(division_name__icontains='Sri Aman')
@@ -372,6 +373,111 @@ def sri_aman_2025_view(request):
 		})
 
 # SARIKEI
+def sarikei_index_view(request):
+	return render(request, 'figure/sarikei_index.html')
+
+def sarikei_2021_view(request):
+	srk_pf_object = pf_queryset.filter(planting_division__icontains='Sarikei')
+	srk_fd_object = fd_queryset.filter(division_name__icontains='Sarikei')
+
+	srk_2021 = srk_pf_object.filter(year__icontains='2021')
+	srk_2021_cumulative = srk_2021.aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+
+	srk_2021_january = srk_2021.filter(month__contains='January').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+	srk_2021_february = srk_2021.filter(month__contains='February').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+	srk_2021_march = srk_2021.filter(month__contains='March').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+	srk_2021_april = srk_2021.filter(month__contains='April').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+	srk_2021_may = srk_2021.filter(month__contains='May').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+	srk_2021_june = srk_2021.filter(month__contains='June').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+	srk_2021_july = srk_2021.filter(month__contains='July').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+	srk_2021_august = srk_2021.filter(month__contains='August').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+	srk_2021_september = srk_2021.filter(month__contains='September').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+	srk_2021_october = srk_2021.filter(month__contains='October').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+	srk_2021_november = srk_2021.filter(month__contains='November').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+	srk_2021_disember = srk_2021.filter(month__contains='Disember').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+
+	srk_2021_label = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'Disember']
+	srk_2021_data = [srk_2021_january, srk_2021_february, srk_2021_march, srk_2021_april,
+	srk_2021_may, srk_2021_june, srk_2021_july, srk_2021_august, srk_2021_september, 
+	srk_2021_october, srk_2021_november, srk_2021_disember]
+
+	return render(request, 'figure/_include/2021/sarikei_2021.html', {
+		'srk_2021':srk_2021,
+		'srk_fd_object':srk_fd_object,
+		'srk_2021_cumulative':srk_2021_cumulative,
+		'srk_2021_label':srk_2021_label,
+		'srk_2021_data':srk_2021_data,
+		})
+
+def sarikei_2022_view(request):
+	srk_pf_object = pf_queryset.filter(planting_division__icontains='Sarikei')
+	srk_fd_object = fd_queryset.filter(division_name__icontains='Sarikei')
+
+	srk_2022 = srk_pf_object.filter(year__icontains='2022')
+	srk_2022_cumulative = srk_2022.aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+
+	srk_2022_january = srk_2022.filter(month__contains='January').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+	srk_2022_february = srk_2022.filter(month__contains='February').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+	srk_2022_march = srk_2022.filter(month__contains='March').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+	srk_2022_april = srk_2022.filter(month__contains='April').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+	srk_2022_may = srk_2022.filter(month__contains='May').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+	srk_2022_june = srk_2022.filter(month__contains='June').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+	srk_2022_july = srk_2022.filter(month__contains='July').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+	srk_2022_august = srk_2022.filter(month__contains='August').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+	srk_2022_september = srk_2022.filter(month__contains='September').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+	srk_2022_october = srk_2022.filter(month__contains='October').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+	srk_2022_november = srk_2022.filter(month__contains='November').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+	srk_2022_disember = srk_2022.filter(month__contains='Disember').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+
+	srk_2022_label = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'Disember']
+	srk_2022_data = [srk_2022_january, srk_2022_february, srk_2022_march, srk_2022_april,
+	srk_2022_may, srk_2022_june, srk_2022_july, srk_2022_august, srk_2022_september, 
+	srk_2022_october, srk_2022_november, srk_2022_disember]
+
+	return render(request, 'figure/_include/2022/sarikei_2022.html', {
+		'srk_2022':srk_2022,
+		'srk_fd_object':srk_fd_object,
+		'srk_2022_cumulative':srk_2022_cumulative,
+		'srk_2022_label':srk_2022_label,
+		'srk_2022_data':srk_2022_data,
+		})
+
+def sarikei_2023_view(request):
+	srk_pf_object = pf_queryset.filter(planting_division__icontains='Sarikei')
+	srk_fd_object = fd_queryset.filter(division_name__icontains='Sarikei')
+
+	srk_2023 = srk_pf_object.filter(year__icontains='2023')
+	srk_2023_cumulative = srk_2023.aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+
+	srk_2023_january = srk_2023.filter(month__contains='January').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+	srk_2023_february = srk_2023.filter(month__contains='February').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+	srk_2023_march = srk_2023.filter(month__contains='March').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+	srk_2023_april = srk_2023.filter(month__contains='April').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+	srk_2023_may = srk_2023.filter(month__contains='May').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+	srk_2023_june = srk_2023.filter(month__contains='June').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+	srk_2023_july = srk_2023.filter(month__contains='July').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+	srk_2023_august = srk_2023.filter(month__contains='August').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+	srk_2023_september = srk_2023.filter(month__contains='September').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+	srk_2023_october = srk_2023.filter(month__contains='October').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+	srk_2023_november = srk_2023.filter(month__contains='November').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+	srk_2023_disember = srk_2023.filter(month__contains='Disember').aggregate(Sum('planting_total_trees_planted'))['planting_total_trees_planted__sum']
+
+	srk_2023_label = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'Disember']
+	srk_2023_data = [srk_2023_january, srk_2023_february, srk_2023_march, srk_2023_april,
+	srk_2023_may, srk_2023_june, srk_2023_july, srk_2023_august, srk_2023_september, 
+	srk_2023_october, srk_2023_november, srk_2023_disember]
+
+	return render(request, 'figure/_include/2023/sarikei_2023.html', {
+		'srk_2023':srk_2023,
+		'srk_fd_object':srk_fd_object,
+		'srk_2023_cumulative':srk_2023_cumulative,
+		'srk_2023_label':srk_2023_label,
+		'srk_2023_data':srk_2023_data,
+		})
+
+# KAPIT
+# SIBU
+# BINTULU
 
 class PlantingFigureDetailView(DetailView):
 	model = PlantingFigure
