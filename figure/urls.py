@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import (figure_index_view, 
+from .views import (figure_index_view, UpdateFigureOverviewView, UpdateKuchingDivisionView,
 kuching_index_view, kuching_2021_view, kuching_2022_view, kuching_2023_view, kuching_2024_view, kuching_2025_view,
 sri_aman_index_view, sri_aman_2021_view, sri_aman_2022_view, sri_aman_2023_view, sri_aman_2024_view, sri_aman_2025_view,
 sarikei_index_view, sarikei_2021_view, sarikei_2022_view, sarikei_2023_view, sarikei_2024_view, sarikei_2025_view,
@@ -13,6 +13,7 @@ PlantingFigureDetailView)
 
 urlpatterns = [
 	path('', figure_index_view, name='figure_index'),
+	path('update_figure_overview/<int:pk>', UpdateFigureOverviewView.as_view(), name='figure_overview_update'),
 	path('kuching_index/', kuching_index_view, name='kuching_index'),
 	path('kuching_2021/', kuching_2021_view, name='kuching_2021'),
 	path('kuching_2022/', kuching_2022_view, name='kuching_2022'),

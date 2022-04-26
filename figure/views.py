@@ -1,8 +1,9 @@
 from django.shortcuts import render
 import math
 from django.db.models import Sum
-from django.views.generic import DetailView
+from django.views.generic import DetailView, UpdateView
 from .models import FigureOverview, FigureByDivision, PlantingFigure
+from .forms import UpdateFigureOverviewForm, UpdateKuchingDivisionForm
 
 fo_data_object = FigureOverview.objects.all()
 fd_queryset = FigureByDivision.objects.all() 
@@ -31,11 +32,22 @@ def figure_index_view(request):
 			'div_percentage_data':div_percentage_data
 		})
 
+class UpdateFigureOverviewView(UpdateView):
+	model = FigureOverview
+	template_name = 'figure/figure_overview_update.html'
+	form_class = UpdateFigureOverviewForm
+
+class UpdateKuchingDivisionView(UpdateView):
+	model = FigureOverview
+	template_name = '_include/division_update/kuching_division_update.html'
+	form_class = UpdateKuchingDivisionForm
+
 ### ALL DIVISION-RELATED
 
 # KUCHING
 def kuching_index_view(request):
-	return render(request, 'figure/kuching_index.html')
+	kch_fd = fd_queryset.filter(division_name__icontains='Kuching')
+	return render(request, 'figure/kuching_index.html', {'kch_fd':kch_fd})
 
 def kuching_2021_view(request):
 	kch_pf_object = pf_queryset.filter(planting_division__icontains='Kuching')

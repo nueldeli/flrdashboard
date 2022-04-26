@@ -12,44 +12,46 @@ class UpdateFigureOverviewForm(forms.ModelForm):
 			'total_hectares':forms.NumberInput(attrs={'class':'form-control'}),
 		}
 
-class UpdateFigureByDivisionForm(forms.ModelForm):
+class UpdateKuchingDivisionForm(forms.ModelForm):
 	class Meta:
 		model = FigureByDivision
-		fields = ('figure_division', 'figure_division_total')
+		fields = ('division_name', 'division_total_trees', 'division_img', 'division_description')
 
 		widgets = {
-			'figure_division':forms.TextInput(),
-			'figure_division_total':forms.NumberInput(attrs={'class':'form-control'})
+			'division_name':forms.TextInput(attrs={'class':'form-control'}),
+			'division_total_trees':forms.NumberInput(attrs={'class':'form-control'}),
+			'division_img':forms.FileInput(),
+			'division_description':forms.Textarea(attrs={'class':'form-control'})
 		}
 
-class AddPlantingFigureForm(forms.ModelForm):
-	class Meta:
-		model = PlantingFigure
-		fields = ('date_planted', 'planting_program_name', 'planting_division', 'planting_total_trees_planted', 'planting_species', 'planting_number_of_species', 'planting_total_hectares', 'planting_location')
+#class AddPlantingFigureForm(forms.ModelForm):
+	#class Meta:
+		#model = PlantingFigure
+		#fields = ('date_planted', 'planting_program_name', 'planting_division', 'planting_total_trees_planted', 'planting_species', 'planting_number_of_species', 'planting_total_hectares', 'planting_location')
 
-		widgets = {
-			'date_planted':forms.TextInput(attrs={'class':'form-control'}),
-			'planting_program_name':forms.TextInput(attrs={'class':'form-control'}),
-			'planting_division':forms.TextInput(),
-			'planting_total_trees_planted':forms.NumberInput(attrs={'class':'form-control'}),
-			'planting_species':forms.Textarea(attrs={'class':'form-control'}),
-			'planting_number_of_species':forms.NumberInput(attrs={'class':'form-control'}),
-			'planting_total_hectares':forms.FloatField(),
-			'planting_location':forms.TextInput(attrs={'class':'form-control'})
-		}
+		#widgets = {
+			#'date_planted':forms.TextInput(attrs={'class':'form-control'}),
+			#'planting_program_name':forms.TextInput(attrs={'class':'form-control'}),
+			#'planting_division':forms.TextInput(),
+			#'planting_total_trees_planted':forms.NumberInput(attrs={'class':'form-control'}),
+			#'planting_species':forms.Textarea(attrs={'class':'form-control'}),
+			#'planting_number_of_species':forms.NumberInput(attrs={'class':'form-control'}),
+			#'planting_total_hectares':forms.FloatField(),
+			#'planting_location':forms.TextInput(attrs={'class':'form-control'})
+		#}
 
-class UpdatePlantingFigureForm(forms.ModelForm):
-	class Meta:
-		model = PlantingFigure
-		fields = ('date_planted', 'planting_program_name', 'planting_division', 'planting_total_trees_planted', 'planting_species', 'planting_number_of_species', 'planting_total_hectares', 'planting_location')
+#class UpdatePlantingFigureForm(forms.ModelForm):
+	#class Meta:
+		#model = PlantingFigure
+		#fields = ('date_planted', 'planting_program_name', 'planting_division', 'planting_total_trees_planted', 'planting_species', 'planting_number_of_species', 'planting_total_hectares', 'planting_location')
 
-		widgets = {
-			'date_planted':forms.TextInput(attrs={'class':'form-control'}),
-			'planting_program_name':forms.TextInput(attrs={'class':'form-control'}),
-			'planting_division':forms.TextInput(),
-			'planting_total_trees_planted':forms.NumberInput(attrs={'class':'form-control'}),
-			'planting_species':forms.Textarea(attrs={'class':'form-control'}),
-			'planting_number_of_species':forms.NumberInput(attrs={'class':'form-control'}),
-			'planting_total_hectares':forms.FloatField(),
-			'planting_location':forms.TextInput(attrs={'class':'form-control'})
-		}
+		#widgets = {
+			#'date_planted':forms.TextInput(attrs={'class':'form-control'}),
+			#'planting_program_name':forms.TextInput(attrs={'class':'form-control'}),
+			#'planting_division':forms.TextInput(),
+			#'planting_total_trees_planted':forms.NumberInput(attrs={'class':'form-control'}),
+			#'planting_species':forms.Textarea(attrs={'class':'form-control'}),
+			#'planting_number_of_species':forms.NumberInput(attrs={'class':'form-control'}),
+			#'planting_total_hectares':forms.FloatField(),
+			#'planting_location':forms.TextInput(attrs={'class':'form-control'})
+		#}
