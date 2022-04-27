@@ -6,34 +6,34 @@ from .models import FigureOverview, FigureByDivision, PlantingFigure
 from .forms import (UpdateFigureOverviewForm, UpdateKuchingDivisionForm, UpdateSriAmanDivisionForm,
 UpdateSarikeiDivisionForm, UpdateKapitDivisionForm, UpdateSibuDivisionForm, UpdateBintuluDivisionForm,
 UpdateMiriDivisionForm, UpdateLimbangDivisionForm, UpdateLawasDivisionForm)
+import pandas as pd
 
 fo_data_object = FigureOverview.objects.all()
 fd_queryset = FigureByDivision.objects.all() 
-pf_queryset = PlantingFigure.objects.all()
+pf_queryset = PlantingFigure.objects.all() 
 
 def figure_index_view(request):
-	label = []
-	div_data = []
-	div_percentage_data = []
+	item = fd_queryset.values()
+	df = pd.DataFrame(item)
+	fd_label = df.division_name.to_list()
+	fd_total_trees = df['division_total_trees'].to_list()
+	fd_total_sum = sum(fd_total_trees)
 
-	for division in fd_queryset:
-		label.append(division.division_name)
-		div_data.append(division.division_total_trees)
+	fd_total_trees_percentage = []
 
-	fd_total = sum(div_data)
-
-	for i in fd_queryset:
-		a = math.trunc((i.division_total_trees / fd_total) * 100)
-		div_percentage_data.append(a) 
+	for i in fd_total_trees:
+		a = math.trunc(( i / fd_total_sum) * 100)
+		fd_total_trees_percentage.append(a) 
 
 	return render(request, 'figure/figure_index.html', {
 			'fo_data_object':fo_data_object,
 			'fd_queryset':fd_queryset,
-			'label':label,
-			'div_data':div_data,
-			'div_percentage_data':div_percentage_data
+			'fd_label':fd_label,
+			'fd_total_trees':fd_total_trees,
+			'fd_total_trees_percentage':fd_total_trees_percentage
 		})
 
+# FIGURE BY DIVISION UPDATE
 class UpdateFigureOverviewView(UpdateView):
 	model = FigureOverview
 	template_name = 'figure/figure_overview_update.html'
@@ -83,6 +83,7 @@ class UpdateLawasDivisionView(UpdateView):
 	model = FigureByDivision
 	template_name = 'figure/_include/division_update/lawas_division_update.html'
 	form_class = UpdateLawasDivisionForm
+
 ### ALL DIVISION-RELATED
 
 # KUCHING

@@ -52,6 +52,7 @@
     <h5 class="text-center">Total trees planted by Division</h5>
     <canvas id="barChart"></canvas>
   </div>
+
   <div class="border rounded p-4 mt-4">
     <h5 class="text-center">Percentage by Division (%)</h5>
     <canvas id="doughnutChart"></canvas>
@@ -155,7 +156,7 @@
 
 <script>
   const labels = [
-    {% for lb in label %} '{{ lb }}', {% endfor %}
+    {% for lbl in fd_label %} '{{ lbl | safe }}', {% endfor %}
   ];
 
   const data = {
@@ -184,7 +185,12 @@
       	'rgb(222, 205, 245)',
       	'rgb(101, 97, 118)',
       ],
-      data: [{% for data in div_data %}'{{ data|safe }}', {% endfor %}],
+
+      data: [{% for data in fd_total_trees %}
+                '{{ data | safe }}',
+            {% endfor %}
+      ],
+
     }]
   };
 
@@ -214,7 +220,8 @@
       	'rgb(222, 205, 245)',
       	'rgb(101, 97, 118)',
       ],
-      data: [{% for data in div_percentage_data %}'{{ data|safe }}', {% endfor %}],
+      data: //[{% for data in div_percentage_data %}'{{ data|safe }}', {% endfor %}]
+      [{% for data in fd_total_trees_percentage %} '{{ data | safe}}', {% endfor %}],
       hoverOffset: 4,
     }]
   };
