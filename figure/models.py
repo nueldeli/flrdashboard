@@ -61,7 +61,7 @@ class FigureByDivision(models.Model):
 		return self.division_name
 
 	def get_absolute_url(self):
-		return reverse('division_index')
+		return reverse('figure_index')
 
 class PlantingFigure(models.Model):
 	date_input = models.DateTimeField(auto_now_add=True)

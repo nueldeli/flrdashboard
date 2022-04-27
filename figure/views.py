@@ -3,7 +3,9 @@ import math
 from django.db.models import Sum
 from django.views.generic import DetailView, UpdateView
 from .models import FigureOverview, FigureByDivision, PlantingFigure
-from .forms import UpdateFigureOverviewForm, UpdateKuchingDivisionForm
+from .forms import (UpdateFigureOverviewForm, UpdateKuchingDivisionForm, UpdateSriAmanDivisionForm,
+UpdateSarikeiDivisionForm, UpdateKapitDivisionForm, UpdateSibuDivisionForm, UpdateBintuluDivisionForm,
+UpdateMiriDivisionForm, UpdateLimbangDivisionForm, UpdateLawasDivisionForm)
 
 fo_data_object = FigureOverview.objects.all()
 fd_queryset = FigureByDivision.objects.all() 
@@ -38,10 +40,49 @@ class UpdateFigureOverviewView(UpdateView):
 	form_class = UpdateFigureOverviewForm
 
 class UpdateKuchingDivisionView(UpdateView):
-	model = FigureOverview
-	template_name = '_include/division_update/kuching_division_update.html'
+	model = FigureByDivision
+	template_name = 'figure/_include/division_update/kuching_division_update.html'
 	form_class = UpdateKuchingDivisionForm
 
+class UpdateSriAmanDivisionView(UpdateView):
+	model = FigureByDivision
+	template_name = 'figure/_include/division_update/sri_aman_division_update.html'
+	form_class = UpdateSriAmanDivisionForm
+
+class UpdateSarikeiDivisionView(UpdateView):
+	model = FigureByDivision
+	template_name = 'figure/_include/division_update/sarikei_division_update.html'
+	form_class = UpdateSarikeiDivisionForm
+
+class UpdateKapitDivisionView(UpdateView):
+	model = FigureByDivision
+	template_name = 'figure/_include/division_update/kapit_division_update.html'
+	form_class = UpdateKapitDivisionForm
+
+class UpdateSibuDivisionView(UpdateView):
+	model = FigureByDivision
+	template_name = 'figure/_include/division_update/sibu_division_update.html'
+	form_class = UpdateSibuDivisionForm
+
+class UpdateBintuluDivisionView(UpdateView):
+	model = FigureByDivision
+	template_name = 'figure/_include/division_update/bintulu_division_update.html'
+	form_class = UpdateBintuluDivisionForm
+
+class UpdateMiriDivisionView(UpdateView):
+	model = FigureByDivision
+	template_name = 'figure/_include/division_update/miri_division_update.html'
+	form_class = UpdateMiriDivisionForm
+
+class UpdateLimbangDivisionView(UpdateView):
+	model = FigureByDivision
+	template_name = 'figure/_include/division_update/limbang_division_update.html'
+	form_class = UpdateLimbangDivisionForm
+
+class UpdateLawasDivisionView(UpdateView):
+	model = FigureByDivision
+	template_name = 'figure/_include/division_update/lawas_division_update.html'
+	form_class = UpdateLawasDivisionForm
 ### ALL DIVISION-RELATED
 
 # KUCHING
@@ -217,7 +258,8 @@ def kuching_2025_view(request):
 
 # SRI AMAN
 def sri_aman_index_view(request):
-	return render(request, 'figure/sri_aman_index.html')
+	sa_fd = fd_queryset.filter(division_name__icontains='Sri Aman')
+	return render(request, 'figure/sri_aman_index.html',{'sa_fd':sa_fd})
 
 def sri_aman_2021_view(request):
 	sa_pf_object = pf_queryset.filter(planting_division__icontains='Sri Aman')
@@ -386,7 +428,8 @@ def sri_aman_2025_view(request):
 
 # SARIKEI
 def sarikei_index_view(request):
-	return render(request, 'figure/sarikei_index.html')
+	srk_fd = fd_queryset.filter(division_name__icontains='Sarikei')
+	return render(request, 'figure/sarikei_index.html', {'srk_fd':srk_fd})
 
 def sarikei_2021_view(request):
 	srk_pf_object = pf_queryset.filter(planting_division__icontains='Sarikei')
@@ -555,7 +598,8 @@ def sarikei_2025_view(request):
 
 # KAPIT
 def kapit_index_view(request):
-	return render(request, 'figure/kapit_index.html')
+	kpt_fd = fd_queryset.filter(division_name__icontains='Kapit')
+	return render(request, 'figure/kapit_index.html', {'kpt_fd':kpt_fd})
 
 def kapit_2021_view(request):
 	kpt_pf_object = pf_queryset.filter(planting_division__icontains='Kapit')
@@ -724,7 +768,8 @@ def kapit_2025_view(request):
 
 # SIBU
 def sibu_index_view(request):
-	return render(request, 'figure/sibu_index.html')
+	sbu_fd = fd_queryset.filter(division_name__icontains='Sibu')
+	return render(request, 'figure/sibu_index.html', {'sbu_fd':sbu_fd})
 
 def sibu_2021_view(request):
 	sbu_pf_object = pf_queryset.filter(planting_division__icontains='Sibu')
@@ -893,7 +938,8 @@ def sibu_2025_view(request):
 
 # BINTULU
 def bintulu_index_view(request):
-	return render(request, 'figure/bintulu_index.html')
+	btu_fd = fd_queryset.filter(division_name__icontains='Bintulu')
+	return render(request, 'figure/bintulu_index.html', {'btu_fd':btu_fd})
 
 def bintulu_2021_view(request):
 	btu_pf_object = pf_queryset.filter(planting_division__icontains='Bintulu')
@@ -1062,7 +1108,8 @@ def bintulu_2025_view(request):
 
 # MIRI
 def miri_index_view(request):
-	return render(request, 'figure/miri_index.html')
+	myy_fd = fd_queryset.filter(division_name__icontains='Miri')
+	return render(request, 'figure/miri_index.html', {'myy_fd':myy_fd})
 
 def miri_2021_view(request):
 	myy_pf_object = pf_queryset.filter(planting_division__icontains='Miri')
@@ -1231,7 +1278,8 @@ def miri_2025_view(request):
 
 # LIMBANG
 def limbang_index_view(request):
-	return render(request, 'figure/limbang_index.html')
+	lbg_fd = fd_queryset.filter(division_name__icontains='Limbang')
+	return render(request, 'figure/limbang_index.html', {'lbg_fd':lbg_fd})
 
 def limbang_2021_view(request):
 	lbg_pf_object = pf_queryset.filter(planting_division__icontains='Limbang')
@@ -1400,7 +1448,8 @@ def limbang_2025_view(request):
 
 # LAWAS
 def lawas_index_view(request):
-	return render(request, 'figure/lawas_index.html')
+	lws_fd = fd_queryset.filter(division_name__icontains='Lawas')
+	return render(request, 'figure/lawas_index.html', {'lws_fd':lws_fd})
 
 def lawas_2021_view(request):
 	lws_pf_object = pf_queryset.filter(planting_division__icontains='Lawas')

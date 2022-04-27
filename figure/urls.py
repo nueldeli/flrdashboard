@@ -1,5 +1,7 @@
 from django.urls import path
-from .views import (figure_index_view, UpdateFigureOverviewView, UpdateKuchingDivisionView,
+from .views import (figure_index_view, UpdateFigureOverviewView, UpdateKuchingDivisionView, UpdateSriAmanDivisionView, 
+UpdateSarikeiDivisionView, UpdateKapitDivisionView, UpdateSibuDivisionView, UpdateBintuluDivisionView, UpdateMiriDivisionView,
+UpdateLimbangDivisionView, UpdateLawasDivisionView,
 kuching_index_view, kuching_2021_view, kuching_2022_view, kuching_2023_view, kuching_2024_view, kuching_2025_view,
 sri_aman_index_view, sri_aman_2021_view, sri_aman_2022_view, sri_aman_2023_view, sri_aman_2024_view, sri_aman_2025_view,
 sarikei_index_view, sarikei_2021_view, sarikei_2022_view, sarikei_2023_view, sarikei_2024_view, sarikei_2025_view,
@@ -14,6 +16,17 @@ PlantingFigureDetailView)
 urlpatterns = [
 	path('', figure_index_view, name='figure_index'),
 	path('update_figure_overview/<int:pk>', UpdateFigureOverviewView.as_view(), name='figure_overview_update'),
+	# Figure by division update
+	path('update_kuching_division/<int:pk>', UpdateKuchingDivisionView.as_view(), name='kuching_division_update'),
+	path('update_sri_aman_division/<int:pk>', UpdateSriAmanDivisionView.as_view(), name='sri_aman_division_update'),
+	path('update_sarikei_division/<int:pk>', UpdateSarikeiDivisionView.as_view(), name='sarikei_division_update'),
+	path('update_kapit_division/<int:pk>', UpdateKapitDivisionView.as_view(), name='kapit_division_update'),
+	path('update_sibu_division/<int:pk>', UpdateSibuDivisionView.as_view(), name='sibu_division_update'),
+	path('update_bintulu_division/<int:pk>', UpdateBintuluDivisionView.as_view(), name='bintulu_division_update'),
+	path('update_miri_division/<int:pk>', UpdateMiriDivisionView.as_view(), name='miri_division_update'),
+	path('update_limbang_division/<int:pk>', UpdateLimbangDivisionView.as_view(), name='limbang_division_update'),
+	path('update_lawas_division/<int:pk>', UpdateLawasDivisionView.as_view(), name='lawas_division_update'),
+	# Division planting figure
 	path('kuching_index/', kuching_index_view, name='kuching_index'),
 	path('kuching_2021/', kuching_2021_view, name='kuching_2021'),
 	path('kuching_2022/', kuching_2022_view, name='kuching_2022'),

@@ -24,6 +24,101 @@ class UpdateKuchingDivisionForm(forms.ModelForm):
 			'division_description':forms.Textarea(attrs={'class':'form-control'})
 		}
 
+class UpdateSriAmanDivisionForm(forms.ModelForm):
+	class Meta:
+		model = FigureByDivision
+		fields = ('division_name', 'division_total_trees', 'division_img', 'division_description')
+
+		widgets = {
+			'division_name':forms.TextInput(attrs={'class':'form-control'}),
+			'division_total_trees':forms.NumberInput(attrs={'class':'form-control'}),
+			'division_img':forms.FileInput(),
+			'division_description':forms.Textarea(attrs={'class':'form-control'})
+		}
+
+class UpdateSarikeiDivisionForm(forms.ModelForm):
+	class Meta:
+		model = FigureByDivision
+		fields = ('division_name', 'division_total_trees', 'division_img', 'division_description')
+
+		widgets = {
+			'division_name':forms.TextInput(attrs={'class':'form-control'}),
+			'division_total_trees':forms.NumberInput(attrs={'class':'form-control'}),
+			'division_img':forms.FileInput(),
+			'division_description':forms.Textarea(attrs={'class':'form-control'})
+		}
+
+class UpdateKapitDivisionForm(forms.ModelForm):
+	class Meta:
+		model = FigureByDivision
+		fields = ('division_name', 'division_total_trees', 'division_img', 'division_description')
+
+		widgets = {
+			'division_name':forms.TextInput(attrs={'class':'form-control'}),
+			'division_total_trees':forms.NumberInput(attrs={'class':'form-control'}),
+			'division_img':forms.FileInput(),
+			'division_description':forms.Textarea(attrs={'class':'form-control'})
+		}
+
+class UpdateSibuDivisionForm(forms.ModelForm):
+	class Meta:
+		model = FigureByDivision
+		fields = ('division_name', 'division_total_trees', 'division_img', 'division_description')
+
+		widgets = {
+			'division_name':forms.TextInput(attrs={'class':'form-control'}),
+			'division_total_trees':forms.NumberInput(attrs={'class':'form-control'}),
+			'division_img':forms.FileInput(),
+			'division_description':forms.Textarea(attrs={'class':'form-control'})
+		}
+
+class UpdateBintuluDivisionForm(forms.ModelForm):
+	class Meta:
+		model = FigureByDivision
+		fields = ('division_name', 'division_total_trees', 'division_img', 'division_description')
+
+		widgets = {
+			'division_name':forms.TextInput(attrs={'class':'form-control'}),
+			'division_total_trees':forms.NumberInput(attrs={'class':'form-control'}),
+			'division_img':forms.FileInput(),
+			'division_description':forms.Textarea(attrs={'class':'form-control'})
+		}
+
+class UpdateMiriDivisionForm(forms.ModelForm):
+	class Meta:
+		model = FigureByDivision
+		fields = ('division_name', 'division_total_trees', 'division_img', 'division_description')
+
+		widgets = {
+			'division_name':forms.TextInput(attrs={'class':'form-control'}),
+			'division_total_trees':forms.NumberInput(attrs={'class':'form-control'}),
+			'division_img':forms.FileInput(),
+			'division_description':forms.Textarea(attrs={'class':'form-control'})
+		}
+
+class UpdateLimbangDivisionForm(forms.ModelForm):
+	class Meta:
+		model = FigureByDivision
+		fields = ('division_name', 'division_total_trees', 'division_img', 'division_description')
+
+		widgets = {
+			'division_name':forms.TextInput(attrs={'class':'form-control'}),
+			'division_total_trees':forms.NumberInput(attrs={'class':'form-control'}),
+			'division_img':forms.FileInput(),
+			'division_description':forms.Textarea(attrs={'class':'form-control'})
+		}
+
+class UpdateLawasDivisionForm(forms.ModelForm):
+	class Meta:
+		model = FigureByDivision
+		fields = ('division_name', 'division_total_trees', 'division_img', 'division_description')
+
+		widgets = {
+			'division_name':forms.TextInput(attrs={'class':'form-control'}),
+			'division_total_trees':forms.NumberInput(attrs={'class':'form-control'}),
+			'division_img':forms.FileInput(),
+			'division_description':forms.Textarea(attrs={'class':'form-control'})
+		}
 #class AddPlantingFigureForm(forms.ModelForm):
 	#class Meta:
 		#model = PlantingFigure
