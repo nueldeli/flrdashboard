@@ -21,10 +21,18 @@
 		</div>
 		{% endif %}
 	</div>
-
 	{% endfor %}
 
 	<br>
+
+	<div class="custom-div mt-4 mb-4">
+		<a href="{% url 'planting_figure_add' %}">
+			<button class="btn btn-custom w-100">Add planting figure</button>
+		</a>
+	</div>
+
+	<br>
+	
 	<p class="text-center">Select year</p>
 	<div class="list-group text-center m-2">
 		<a class="list-group-item list-group-item-action flex-column align-items-start" href="{% url 'sarikei_2025' %}">

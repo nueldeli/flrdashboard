@@ -2,7 +2,7 @@ from django.urls import path
 from .views import (figure_index_view, UpdateFigureOverviewView, UpdateKuchingDivisionView, UpdateSriAmanDivisionView, 
 UpdateSarikeiDivisionView, UpdateKapitDivisionView, UpdateSibuDivisionView, UpdateBintuluDivisionView, UpdateMiriDivisionView,
 UpdateLimbangDivisionView, UpdateLawasDivisionView,
-AddPlantingFigureView, 
+AddPlantingFigureView, UpdatePlantingFigureView, DeletePlantingFigureView,
 kuching_index_view, kuching_2021_view, kuching_2022_view, kuching_2023_view, kuching_2024_view, kuching_2025_view,
 sri_aman_index_view, sri_aman_2021_view, sri_aman_2022_view, sri_aman_2023_view, sri_aman_2024_view, sri_aman_2025_view,
 sarikei_index_view, sarikei_2021_view, sarikei_2022_view, sarikei_2023_view, sarikei_2024_view, sarikei_2025_view,
@@ -84,5 +84,7 @@ urlpatterns = [
 	path('lawas_2025/', lawas_2025_view, name='lawas_2025'),
 	# Planting figure related
 	path('add_planting_figure/', AddPlantingFigureView.as_view(), name='planting_figure_add'),
-	path('planting_detail/<int:pk>', PlantingFigureDetailView.as_view(), name='planting_figure_detail')
+	path('planting_detail/<int:pk>', PlantingFigureDetailView.as_view(), name='planting_figure_detail'),
+	path('update_planting_figure/<int:pk>', UpdatePlantingFigureView.as_view(), name='planting_figure_update'),
+	path('delete_planting_figure/<int:pk>', DeletePlantingFigureView.as_view(), name='planting_figure_delete')
 ]

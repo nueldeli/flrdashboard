@@ -83,4 +83,4 @@ class PlantingFigure(models.Model):
 		return self.planting_program_name 
 
 	def get_absolute_url(self):
-		return reverse_lazy('figure_index')	
+		return reverse('figure_index')	

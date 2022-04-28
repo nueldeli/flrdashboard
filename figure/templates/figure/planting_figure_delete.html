@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+{% if user.is_authenticated %}
+<div class="custom-div border rounded shadow p-4">
+	<h6>Deleting <b>"{{ object.planting_program_name }}"</b></h6>
+	<div class="form-group">
+		<form method="POST">
+			{% csrf_token %}
+			<p>Are you sure?</p>
+			<button class="btn btn-danger">Delete</button>
+		</form>
+	</div>
+</div>
+{% else %}
+<div class="custom-div mt-4 text-center">
+	<h6>Sorry, you have no access here.</h6>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,8 +1,9 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
 import math
 from django.db.models import Sum
 import pandas as pd
-from django.views.generic import CreateView, DetailView, UpdateView
+from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 from .models import FigureOverview, FigureByDivision, PlantingFigure
 from .forms import (UpdateFigureOverviewForm, AddPlantingFigureForm, UpdatePlantingFigureForm, 
 UpdateKuchingDivisionForm, UpdateSriAmanDivisionForm, UpdateSarikeiDivisionForm, 
@@ -1627,4 +1628,14 @@ class AddPlantingFigureView(CreateView):
 class PlantingFigureDetailView(DetailView):
 	model = PlantingFigure
 	template_name = 'figure/planting_figure_detail.html'
+
+class UpdatePlantingFigureView(UpdateView):
+	model = PlantingFigure
+	template_name = 'figure/planting_figure_update.html'
+	form_class = UpdatePlantingFigureForm
+
+class DeletePlantingFigureView(DeleteView):
+	model = PlantingFigure
+	template_name = 'figure/planting_figure_delete.html'
+	success_url = reverse_lazy('figure_index')
 

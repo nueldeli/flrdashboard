@@ -9,5 +9,17 @@
 	<p>Species: {{ object.planting_species }}</p>
 	<p>Total hectares: {{ object.planting_total_hectares }} ha</p>
 	<p>Location: {{ object.planting_location }}</p>
+	<div class="row text-center mt-4">
+		<div class="col-6">
+			<a href="{% url 'planting_figure_update' object.pk %}">
+				<button class="btn btn-custom">Edit</button>
+			</a>
+		</div>
+		<div class="col-6">
+			<a href="{% url 'planting_figure_delete' object.pk %}">
+				<button class="btn btn-danger">Delete</button>
+			</a>
+		</div>
+	</div>
 </div>
 {% endblock %}
