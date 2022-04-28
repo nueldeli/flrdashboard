@@ -1,5 +1,6 @@
 from django import forms
 from .models import FigureOverview, FigureByDivision, PlantingFigure
+from django.utils.translation import gettext_lazy as _
 
 class UpdateFigureOverviewForm(forms.ModelForm):
 	class Meta:
@@ -24,6 +25,12 @@ class UpdateKuchingDivisionForm(forms.ModelForm):
 			'division_description':forms.Textarea(attrs={'class':'form-control'})
 		}
 
+		labels= {
+			'division_total_trees':_('Total trees'),
+			'division_img':_('Division Image'),
+			'division_description':_('Remarks')
+		}
+
 class UpdateSriAmanDivisionForm(forms.ModelForm):
 	class Meta:
 		model = FigureByDivision
@@ -34,6 +41,12 @@ class UpdateSriAmanDivisionForm(forms.ModelForm):
 			'division_total_trees':forms.NumberInput(attrs={'class':'form-control'}),
 			'division_img':forms.FileInput(),
 			'division_description':forms.Textarea(attrs={'class':'form-control'})
+		}
+
+		labels= {
+			'division_total_trees':_('Total trees'),
+			'division_img':_('Division Image'),
+			'division_description':_('Remarks')
 		}
 
 class UpdateSarikeiDivisionForm(forms.ModelForm):
@@ -48,6 +61,12 @@ class UpdateSarikeiDivisionForm(forms.ModelForm):
 			'division_description':forms.Textarea(attrs={'class':'form-control'})
 		}
 
+		labels= {
+			'division_total_trees':_('Total trees'),
+			'division_img':_('Division Image'),
+			'division_description':_('Remarks')
+		}
+
 class UpdateKapitDivisionForm(forms.ModelForm):
 	class Meta:
 		model = FigureByDivision
@@ -58,6 +77,12 @@ class UpdateKapitDivisionForm(forms.ModelForm):
 			'division_total_trees':forms.NumberInput(attrs={'class':'form-control'}),
 			'division_img':forms.FileInput(),
 			'division_description':forms.Textarea(attrs={'class':'form-control'})
+		}
+
+		labels= {
+			'division_total_trees':_('Total trees'),
+			'division_img':_('Division Image'),
+			'division_description':_('Remarks')
 		}
 
 class UpdateSibuDivisionForm(forms.ModelForm):
@@ -72,6 +97,12 @@ class UpdateSibuDivisionForm(forms.ModelForm):
 			'division_description':forms.Textarea(attrs={'class':'form-control'})
 		}
 
+		labels= {
+			'division_total_trees':_('Total trees'),
+			'division_img':_('Division Image'),
+			'division_description':_('Remarks')
+		}
+
 class UpdateBintuluDivisionForm(forms.ModelForm):
 	class Meta:
 		model = FigureByDivision
@@ -82,6 +113,12 @@ class UpdateBintuluDivisionForm(forms.ModelForm):
 			'division_total_trees':forms.NumberInput(attrs={'class':'form-control'}),
 			'division_img':forms.FileInput(),
 			'division_description':forms.Textarea(attrs={'class':'form-control'})
+		}
+
+		labels= {
+			'division_total_trees':_('Total trees'),
+			'division_img':_('Division Image'),
+			'division_description':_('Remarks')
 		}
 
 class UpdateMiriDivisionForm(forms.ModelForm):
@@ -96,6 +133,12 @@ class UpdateMiriDivisionForm(forms.ModelForm):
 			'division_description':forms.Textarea(attrs={'class':'form-control'})
 		}
 
+		labels= {
+			'division_total_trees':_('Total trees'),
+			'division_img':_('Division Image'),
+			'division_description':_('Remarks')
+		}
+
 class UpdateLimbangDivisionForm(forms.ModelForm):
 	class Meta:
 		model = FigureByDivision
@@ -108,6 +151,12 @@ class UpdateLimbangDivisionForm(forms.ModelForm):
 			'division_description':forms.Textarea(attrs={'class':'form-control'})
 		}
 
+		labels= {
+			'division_total_trees':_('Total trees'),
+			'division_img':_('Division Image'),
+			'division_description':_('Remarks')
+		}
+
 class UpdateLawasDivisionForm(forms.ModelForm):
 	class Meta:
 		model = FigureByDivision
@@ -118,6 +167,12 @@ class UpdateLawasDivisionForm(forms.ModelForm):
 			'division_total_trees':forms.NumberInput(attrs={'class':'form-control'}),
 			'division_img':forms.FileInput(),
 			'division_description':forms.Textarea(attrs={'class':'form-control'})
+		}
+
+		labels= {
+			'division_total_trees':_('Total trees'),
+			'division_img':_('Division Image'),
+			'division_description':_('Remarks')
 		}
 
 class AddPlantingFigureForm(forms.ModelForm):
@@ -138,6 +193,16 @@ class AddPlantingFigureForm(forms.ModelForm):
 			'planting_location':forms.TextInput(attrs={'class':'form-control'})
 		}
 
+		labels = {
+			'planting_program_name':_('Program name'),
+			'planting_division':_('Division'),
+			'planting_total_trees_planted':_('Total trees'),
+			'planting_species':_('Species'),
+			'planting_number_of_species':_('Number of species'),
+			'planting_total_hectares':_('Total hectares'),
+			'planting_location':_('Location')
+		}
+
 class UpdatePlantingFigureForm(forms.ModelForm):
 	class Meta:
 		model = PlantingFigure
@@ -154,4 +219,14 @@ class UpdatePlantingFigureForm(forms.ModelForm):
 			'planting_number_of_species':forms.NumberInput(attrs={'class':'form-control'}),
 			'planting_total_hectares':forms.NumberInput(attrs={'class':'form-control'}),
 			'planting_location':forms.TextInput(attrs={'class':'form-control'})
+		}
+
+		labels = {
+			'planting_program_name':_('Program name'),
+			'planting_division':_('Division'),
+			'planting_total_trees_planted':_('Total trees'),
+			'planting_species':_('Species'),
+			'planting_number_of_species':_('Number of species'),
+			'planting_total_hectares':_('Total hectares'),
+			'planting_location':_('Location')
 		}

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{% if user.is_authenticated and user.is_staff %}
+{% if user.is_authenticated and group.name == 'Bintulu' %}
 <br>
 <div class="custom-div border rounded shadow p-4">
 	<div class="form-group">
