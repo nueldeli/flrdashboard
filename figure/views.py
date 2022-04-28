@@ -1,12 +1,13 @@
 from django.shortcuts import render
 import math
 from django.db.models import Sum
-from django.views.generic import DetailView, UpdateView
-from .models import FigureOverview, FigureByDivision, PlantingFigure
-from .forms import (UpdateFigureOverviewForm, UpdateKuchingDivisionForm, UpdateSriAmanDivisionForm,
-UpdateSarikeiDivisionForm, UpdateKapitDivisionForm, UpdateSibuDivisionForm, UpdateBintuluDivisionForm,
-UpdateMiriDivisionForm, UpdateLimbangDivisionForm, UpdateLawasDivisionForm)
 import pandas as pd
+from django.views.generic import CreateView, DetailView, UpdateView
+from .models import FigureOverview, FigureByDivision, PlantingFigure
+from .forms import (UpdateFigureOverviewForm, AddPlantingFigureForm, UpdatePlantingFigureForm, 
+UpdateKuchingDivisionForm, UpdateSriAmanDivisionForm, UpdateSarikeiDivisionForm, 
+UpdateKapitDivisionForm, UpdateSibuDivisionForm, UpdateBintuluDivisionForm,
+UpdateMiriDivisionForm, UpdateLimbangDivisionForm, UpdateLawasDivisionForm)
 
 fo_data_object = FigureOverview.objects.all()
 fd_queryset = FigureByDivision.objects.all() 
@@ -1617,6 +1618,13 @@ def lawas_2025_view(request):
 		'lws_2025_data':lws_2025_data,
 		})
 
+# GENERAL WRITING AND UPDATE FOR THE PLANTING PROGRAM
+class AddPlantingFigureView(CreateView):
+	model = PlantingFigure
+	template_name = 'figure/planting_figure_add.html'
+	form_class = AddPlantingFigureForm
+
 class PlantingFigureDetailView(DetailView):
 	model = PlantingFigure
-	template_name = 'figure/division_detail.html'
+	template_name = 'figure/planting_figure_detail.html'
+
