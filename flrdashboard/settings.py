@@ -36,6 +36,9 @@ INSTALLED_APPS = [
     # Figure apps
     'figure.apps.FigureConfig',
     # ---
+    # Membership app
+    'membership.apps.MembershipConfig',
+    # ---
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -132,3 +135,7 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Login and logout stuff
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'

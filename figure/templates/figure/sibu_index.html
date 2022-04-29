@@ -13,24 +13,28 @@
 			<h4>{{ fd.division_total_trees }} <small class="text-muted">total trees planted</small></h4>
 			<small class="text-muted">{{ fd.division_description }}</small>
 		</div>
-		{% if user.is_authenticated and group.name == "Sibu" %}
-		<div class="col-sm-12 text-center mt-4">
-			<a href="{% url 'sibu_division_update' fd.pk %}">
-				<button class="btn btn-custom">Update figure</button>
-			</a>
-		</div>
-		{% endif %}
+		{% for group in request.user.groups.all %}
+			{% if user.is_authenticated and group.name == "Sibu" %}
+			<div class="col-sm-12 text-center mt-4">
+				<a href="{% url 'sibu_division_update' fd.pk %}">
+					<button class="btn btn-custom">Update figure</button>
+				</a>
+			</div>
+			{% endif %}
+		{% endfor %}
 	</div>
 	{% endfor %}
 
 	<br>
-	{% if user.is_authenticated and group.name == "Sibu" %}
-	<div class="custom-div mt-4 mb-4">
-		<a href="{% url 'planting_figure_add' %}">
-			<button class="btn btn-custom w-100">Add planting figure</button>
-		</a>
-	</div>
-	{% endif %}
+	{% for group in request.user.groups.all %}
+		{% if user.is_authenticated and group.name == "Sibu" %}
+		<div class="custom-div mt-4 mb-4">
+			<a href="{% url 'planting_figure_add' %}">
+				<button class="btn btn-custom w-100">Add planting figure</button>
+			</a>
+		</div>
+		{% endif %}
+	{% endfor %}
 	<br>
 
 	<p class="text-center">Select year</p>

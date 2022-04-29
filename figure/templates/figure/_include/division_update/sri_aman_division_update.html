@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% for group in request.user.groups.all %}
 {% if user.is_authenticated and group.name == "Sri Aman" %}
 <br>
 <div class="custom-div border rounded shadow p-4">
@@ -19,5 +20,6 @@
 	<h6>Sorry, you have no access here</h6>
 </div>
 {% endif %}
+{% endfor %}
 <br>
 {% endblock %}

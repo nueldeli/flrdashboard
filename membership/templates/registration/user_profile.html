@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+<div class="custom-div border rounded shadow 	p-4">
+	<p>Name: <strong>{{ user.first_name }} {{ user.last_name }}</strong></p>
+	<p>Username: <strong>{{ user.username }}</strong></p>
+	<p>Email: <strong>{{ user.email }}</strong></p>
+	<a href="{% url 'password_change' %}">
+		<button class="btn btn-custom">Change password</button>
+	</a>
+</div>
+{% endblock %}
