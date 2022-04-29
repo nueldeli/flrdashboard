@@ -213,7 +213,7 @@ class UpdatePlantingFigureForm(forms.ModelForm):
 			'month':forms.Select(attrs={'class':'form-control'}),
 			'year':forms.Select(attrs={'class':'form-control'}),
 			'planting_program_name':forms.TextInput(attrs={'class':'form-control'}),
-			'planting_division':forms.Select(attrs={'class':'form-control'}),
+			'planting_division':forms.HiddenInput(attrs={'class':'form-control'}),
 			'planting_total_trees_planted':forms.NumberInput(attrs={'class':'form-control'}),
 			'planting_species':forms.Textarea(attrs={'class':'form-control'}),
 			'planting_number_of_species':forms.NumberInput(attrs={'class':'form-control'}),
